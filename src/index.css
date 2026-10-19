@@ -1,0 +1,163 @@
+@import "tailwindcss";
+
+@theme {
+  --color-ink: #000000;
+  --color-bone: #f1eee7;
+  --color-graphite: #141414;
+  --color-ash: #8a8a8a;
+  --color-blood: #ff2a1f;
+
+  --font-display: "Bodoni Moda", Didot, "Times New Roman", serif;
+  --font-sans: "Archivo", system-ui, sans-serif;
+  --font-label: "Jost", system-ui, sans-serif;
+
+  --text-mega: clamp(5rem, 24vw, 28rem);
+  --text-huge: clamp(3rem, 10vw, 11rem);
+  --text-title: clamp(2rem, 5vw, 5rem);
+
+  --animate-marquee: marquee 26s linear infinite;
+  @keyframes marquee {
+    to {
+      transform: translateX(-50%);
+    }
+  }
+}
+
+@layer base {
+  html {
+    background: var(--color-ink);
+    color: #fff;
+  }
+  html.lenis,
+  html.lenis body {
+    height: auto;
+  }
+  .lenis.lenis-smooth {
+    scroll-behavior: auto !important;
+  }
+  body {
+    font-family: var(--font-sans);
+    font-stretch: 100%;
+    font-size: 1.0625rem;
+    line-height: 1.5;
+    overflow-x: clip;
+  }
+  a {
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    text-decoration-thickness: 2px;
+  }
+  ::selection {
+    background: #fff;
+    color: #000;
+  }
+  :focus-visible {
+    outline: 4px solid var(--color-blood);
+    outline-offset: 3px;
+  }
+}
+
+@layer components {
+  /* Section themes: set colours + shadow colour together */
+  .theme-dark {
+    background: var(--color-ink);
+    color: #fff;
+    --shadow: #fff;
+  }
+  .theme-light {
+    background: #fff;
+    color: var(--color-ink);
+    --shadow: var(--color-ink);
+  }
+  .theme-bone {
+    background: var(--color-bone);
+    color: var(--color-ink);
+    --shadow: var(--color-ink);
+  }
+
+  .display {
+    font-family: var(--font-display);
+    font-weight: 900;
+    text-transform: uppercase;
+    line-height: 0.85;
+    letter-spacing: -0.02em;
+  }
+  .display em {
+    font-style: italic;
+    font-weight: 500;
+    text-transform: none;
+  }
+  .shout {
+    font-family: var(--font-sans);
+    font-stretch: 125%;
+    font-weight: 900;
+    text-transform: uppercase;
+    line-height: 0.85;
+    letter-spacing: -0.04em;
+  }
+  .label {
+    font-family: var(--font-label);
+    font-weight: 400;
+    font-size: 0.8125rem;
+    text-transform: uppercase;
+    letter-spacing: 0.4em;
+  }
+  .brut-card {
+    border: 3px solid currentColor;
+    box-shadow: 6px 6px 0 0 var(--shadow, currentColor);
+    transition:
+      transform 0.12s steps(2),
+      box-shadow 0.12s steps(2);
+  }
+  .brut-card:hover {
+    transform: translate(6px, 6px);
+    box-shadow: 0 0 0 0 var(--shadow, currentColor);
+  }
+
+  .bw {
+    filter: grayscale(1) contrast(1.4) brightness(0.95);
+    transition: filter 0.2s steps(3);
+  }
+  .bw:hover,
+  a:focus-visible .bw,
+  .brut-card:hover .bw {
+    filter: none;
+  }
+  .halftone {
+    position: relative;
+  }
+  .halftone::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.45;
+    mix-blend-mode: multiply;
+    background: radial-gradient(#000 1px, transparent 1.6px) 0 0 / 4px 4px;
+  }
+
+  .grain::after {
+    content: "";
+    position: fixed;
+    inset: -50%;
+    z-index: 90;
+    pointer-events: none;
+    opacity: 0.14;
+    mix-blend-mode: overlay;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+  }
+
+  /* Crown mark as a mask so it can take any colour (uses currentColor) */
+  .crown-mask {
+    background-color: currentColor;
+    -webkit-mask: var(--crown) center / contain no-repeat;
+    mask: var(--crown) center / contain no-repeat;
+    aspect-ratio: 225 / 210;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-marquee {
+    animation: none;
+  }
+}

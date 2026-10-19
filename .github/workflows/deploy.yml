@@ -9,7 +9,7 @@ permissions:
   contents: read
 
 concurrency:
-  group: pages
+  group: soul-studio-pages-deploy
   cancel-in-progress: true
 
 jobs:

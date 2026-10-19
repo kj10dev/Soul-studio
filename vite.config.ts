@@ -7,5 +7,6 @@ import { viteSingleFile } from "vite-plugin-singlefile";
 const single = process.env.SINGLE_FILE === "1";
 
 export default defineConfig({
+  base: "/Soul-studio/",
   plugins: [react(), tailwindcss(), ...(single ? [viteSingleFile()] : [])],
 });

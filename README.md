@@ -10,12 +10,15 @@ npm run build      # production build -> dist/
 SINGLE_FILE=1 npx vite build --outDir dist-single   # one self-contained index.html
 ```
 
+GitHub Pages is deployed from the `dist/` build by the workflow in `.github/workflows/deploy.yml`.
+In the repository settings, set **Pages → Build and deployment → Source** to **GitHub Actions**.
+
 ## Where to change things
 
 | What | Where |
 |---|---|
 | All copy, styles list, aftercare, links | `src/data/content.ts` (items marked TODO are proposals) |
-| Real tattoo photos | put files in `public/work/` and set `image: "/work/01.jpg"` on a work item; they are shown black & white and return to colour on hover |
+| Real tattoo photos | put files in `public/work/` and set an item's `image` to `${import.meta.env.BASE_URL}work/01.jpg`; they are shown black & white and return to colour on hover |
 | Artist portrait | set `artist.portrait` in `content.ts` |
 | Booking email / studio location | set `brand.email` / `brand.location`; they appear automatically |
 | Logo | `src/assets/logo.jpg` (swap for an SVG when available); crown mark: `src/assets/crown.png` |

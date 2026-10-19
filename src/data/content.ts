@@ -32,12 +32,12 @@ export const work: {
   rotate: number;
   offset: string;
 }[] = [
-  { id: "01", style: "Custom", year: "2026", title: "Rings", image: "/work/pic1.jpg", plate: "rings", rotate: -3, offset: "md:mt-0" },
-  { id: "02", style: "Fine line", year: "2026", title: "Tide", image: "/work/pic2.jpg", plate: "waves", rotate: 2, offset: "md:mt-[14vh]" },
-  { id: "03", style: "Blackwork", year: "2026", title: "Thorn", image: "/work/pic3.jpg", plate: "barbs", rotate: -1.5, offset: "md:-mt-[8vh]" },
-  { id: "04", style: "Cover-ups", year: "2025", title: "Night sky", image: "/work/pic4.jpg", plate: "stars", rotate: 4, offset: "md:mt-[20vh]" },
-  { id: "05", style: "Custom", year: "2025", title: "Grain", image: "/work/pic5.jpg", plate: "dots", rotate: -2.5, offset: "md:mt-[4vh]" },
-  { id: "06", style: "Blackwork", year: "2025", title: "Crowned", image: "/work/pic6.jpg", plate: "crowns", rotate: 3, offset: "md:-mt-[4vh]" },
+  { id: "01", style: "Custom", year: "2026", title: "Rings", image: `${import.meta.env.BASE_URL}work/pic1.jpg`, plate: "rings", rotate: -3, offset: "md:mt-0" },
+  { id: "02", style: "Fine line", year: "2026", title: "Tide", image: `${import.meta.env.BASE_URL}work/pic2.jpg`, plate: "waves", rotate: 2, offset: "md:mt-[14vh]" },
+  { id: "03", style: "Blackwork", year: "2026", title: "Thorn", image: `${import.meta.env.BASE_URL}work/pic3.jpg`, plate: "barbs", rotate: -1.5, offset: "md:-mt-[8vh]" },
+  { id: "04", style: "Cover-ups", year: "2025", title: "Night sky", image: `${import.meta.env.BASE_URL}work/pic4.jpg`, plate: "stars", rotate: 4, offset: "md:mt-[20vh]" },
+  { id: "05", style: "Custom", year: "2025", title: "Grain", image: `${import.meta.env.BASE_URL}work/pic5.jpg`, plate: "dots", rotate: -2.5, offset: "md:mt-[4vh]" },
+  { id: "06", style: "Blackwork", year: "2025", title: "Crowned", image: `${import.meta.env.BASE_URL}work/pic6.jpg`, plate: "crowns", rotate: 3, offset: "md:-mt-[4vh]" },
 ];
 
 // *word* renders as Bodoni italic
@@ -46,7 +46,7 @@ export const manifesto = ["skin is the *canvas.*", "no copies. no *regrets.*", "
 export const artist = {
   name: "KB Luff",
   bio: "Soul is the studio of KB Luff. Every piece is drawn for the person wearing it, then made once and never repeated.", // TODO: real bio
-  portrait: "/work/pic14.jpg",
+  portrait: `${import.meta.env.BASE_URL}work/pic14.jpg`,
   facts: [
     { k: "Booking", v: "Send a DM on Instagram" },
     { k: "Work", v: "Custom, one of one" },
